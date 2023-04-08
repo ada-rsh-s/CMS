@@ -22,10 +22,21 @@ router.post("/add", (req, res) => {
       res.redirect("/");
     });
 });
-router.post("/delete", (req, res) => {
-    indexHelpers.deletePerson().then(() => {
-      res.redirect("/");
-    });
+
+router.get("/edit/:id", (req, res) => {
+  indexHelpers.getPerson(req.params.id).then((person) => {
+    res.render("editperson", { person });
+  });
+});
+router.post("/edit/:id", (req, res) => {
+  indexHelpers.editPerson(req.params.id, req.body).then(() => {
+    res.redirect("/");
+  });
+});
+router.get("/delete/:id", (req, res) => {
+  indexHelpers.deletePerson(req.params.id).then(() => {
+    res.redirect("/");
+  });
 });
 
 module.exports = router;

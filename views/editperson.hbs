@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/util.css" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/util.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
 
     <meta name="robots" content="noindex, follow" />
   </head>
@@ -17,11 +17,10 @@
           class="contact100-form validate-form"
           method="POST"
           id="person-form"
-          action="/add"
+          action="/edit/{{person._id}}"
         >
           <span class="contact100-form-title">
-            Add a Contact
-          </span>
+Edit the contact          </span>
           <div class="wrap-input100">
             <input
               class="input100"
@@ -29,6 +28,7 @@
               type="text"
               name="name"
               placeholder="Name"
+               value="{{person.name}}"
               required
             />
 
@@ -40,6 +40,7 @@
               type="text"
               name="email"
               placeholder="Email"
+               value="{{person.email}}"
               required
             />
             <label class="label-input100" for="email">
@@ -53,6 +54,7 @@
               type="text"
               name="phone"
               placeholder="Phone"
+              value="{{person.phone}}"
               required
             />
             <label class="label-input100" for="phone">
@@ -64,7 +66,7 @@
             <div class="wrap-contact100-form-btn">
               <div class="contact100-form-bgbtn"></div>
               <button class="contact100-form-btn">
-                Add Contact
+                Edit Contact
               </button>
             </div>
           </div>
@@ -72,7 +74,7 @@
       </div>
     </div>
     <div id="dropDownSelect1"></div>
-   
+
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
 
 	<script>        $("#person-form").validate({

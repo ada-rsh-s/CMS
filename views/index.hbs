@@ -1,103 +1,115 @@
 <html lang="en">
 
-  <head>
-    <title>Table 05</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+<head>
+  <title>Table 05</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-    <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 
-  </head>
+</head>
 
-  <body>
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-6 text-center mb-5">
-            <h2 class="heading-section">Content Management System</h2>
-          </div>
-        </div>
-        <center><a href="/add"><div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-warning newButton">Add New</button>
-            </a>
-
-          </div></center>
-
-        <div class="row">
-
-          <div class="col-md-12">
-            <div class="table-wrap">
-              <table class="table table-responsive-xl">
-                <thead>
-                  <tr>
-                    <th>Email</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  	{{#each person}}
-                  <tr class="alert" role="alert">
-
-                    <td class="d-flex align-items-center">
-                      <div
-                        class="img"
-                        style="background-image: url(https://www.incimages.com/uploaded_files/image/1920x1080/getty_481292845_77896.jpg);"
-                      ></div>
-                      <div class="pl-3 email">
-                        <span>{{this.email}}</span>
-                        <span>Added: {{this.date}}</span>
-                      </div>
-                    </td>
-                    <td>{{this.name}}</td>
-                    <td>{{this.phone}}</td>
-                    <td>
-                      <button
-                        type="button"
-                        class="close"
-                        data-dismiss="alert"
-                        aria-label="Close"
-                      >
-                        <span style="font-size: 23px;" aria-hidden="true"><i
-                            class="fa fa-edit"
-                          ></i></span>
-                        
-                      </button>
-                    </td>
-                    <td><center>
-                      <a href=""></a>
-                      <button
-                        type="button"
-                        class="close"
-                        data-dismiss="alert"
-                        aria-label="Close"
-                      >
-                        <span style="font-size: 20px;" aria-hidden="true"><i
-                            class="fa fa-close"
-                          ></i></span>
-                        
-                      </button></center>
-                    </td>
-                  </tr>
-{{/each}}
-                </tbody>
-              </table>
-            </div>
-          </div>
+<body>
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+          <h2 class="heading-section">Contact Management System</h2>
         </div>
       </div>
-    </section>
+      <center><a href="/add">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-warning newButton">Add New</button>
+        </a>
 
-  </body>
+    </div>
+    </center>
+
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="table-wrap">
+          <table class="table table-responsive-xl" id="personTable">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each person}}
+              <tr class="alert" role="alert">
+
+                <td class="d-flex align-items-center">
+                  <div class="img"
+                    style="background-image: url(https://www.incimages.com/uploaded_files/image/1920x1080/getty_481292845_77896.jpg);">
+                  </div>
+                  <div class="pl-3 email">
+                    <span>{{this.email}}</span>
+                    <span>Added: {{this.date}}</span>
+                  </div>
+                </td>
+                <td>{{this.name}}</td>
+                <td>{{this.phone}}</td>
+                <td>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <a href="/edit/{{this._id}}"> <span style="font-size: 23px;" aria-hidden="true"><i
+                          class="fa fa-edit"></i></span>
+                    </a>
+                  </button>
+                </td>
+                <td>
+                  <center>
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                      onclick="delconfirm('{{this._id}}')">
+                      <span style="font-size: 20px;" aria-hidden="true"><i class="fa fa-close"></i></span>
+
+                    </button>
+                  </center>
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#personTable').DataTable();
+    });
+
+    function delconfirm(id) {
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this Person!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+        .then((willDelete) => {
+          if (willDelete) {
+            window.location = "/delete/" + id
+          } else {
+            swal("Person Details not removed");
+          }
+        });
+    }
+  </script>
+</body>
 
 </html>
