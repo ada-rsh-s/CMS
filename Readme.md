@@ -7,7 +7,7 @@ PORT = <YOUR PORT NUMBER>
 MONGO_URL = <YOUR MONGODB CONNECTION STRING>
 
 Step 4 - Type npm start to run the api
-Step 5 - Enter in this link in your browser - "https://localhost:300/ to run the api
+Step 5 - Enter in this link in your browser - "https://localhost:<YOUR PORT NUMBER>/ to run the api
 
 
 
