@@ -41,10 +41,12 @@
                     <th>Email</th>
                     <th>Name</th>
                     <th>Phone</th>
-                    <th>&nbsp;</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
+                  	{{#each person}}
                   <tr class="alert" role="alert">
 
                     <td class="d-flex align-items-center">
@@ -53,12 +55,12 @@
                         style="background-image: url(https://www.incimages.com/uploaded_files/image/1920x1080/getty_481292845_77896.jpg);"
                       ></div>
                       <div class="pl-3 email">
-                        <span>markotto@email.com</span>
-                        <span>Added: 01/03/2020</span>
+                        <span>{{this.email}}</span>
+                        <span>Added: {{this.date}}</span>
                       </div>
                     </td>
-                    <td>Markotto89</td>
-                    <td>Markotto89</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.phone}}</td>
                     <td>
                       <button
                         type="button"
@@ -66,13 +68,28 @@
                         data-dismiss="alert"
                         aria-label="Close"
                       >
-                        <span aria-hidden="true"><i
-                            class="fa fa-close"
+                        <span style="font-size: 23px;" aria-hidden="true"><i
+                            class="fa fa-edit"
                           ></i></span>
+                        
                       </button>
                     </td>
+                    <td><center>
+                      <a href=""></a>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                      >
+                        <span style="font-size: 20px;" aria-hidden="true"><i
+                            class="fa fa-close"
+                          ></i></span>
+                        
+                      </button></center>
+                    </td>
                   </tr>
-
+{{/each}}
                 </tbody>
               </table>
             </div>

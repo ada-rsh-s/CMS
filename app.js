@@ -6,8 +6,6 @@ var logger = require('morgan');
 var db = require("./config/connection");
 
 var indexRouter = require('./routes/index');
-
-
 var hbs = require("express-handlebars");
 var app = express();
 
@@ -31,6 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 db.connect((err) => {
   if (err) console.log("connection error" + err);
+  
   else console.log("--------Database Connected--------");
 });
 
