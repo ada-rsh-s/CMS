@@ -40,13 +40,13 @@ module.exports = {
       let person = await db
         .get()
         .collection(collections.USER_DETAILS)
-        .findOne({_id:ObjectId(id)})
+        .findOne({ _id: ObjectId(id) });
       resolve(person);
     });
   },
   editPerson: (id, personDetails) => {
     return new Promise((resolve, reject) => {
-      console.log(id,personDetails);
+      console.log(id, personDetails);
       db.get()
         .collection(collections.USER_DETAILS)
         .updateOne(
@@ -66,4 +66,3 @@ module.exports = {
     });
   },
 };
- 
